@@ -78,6 +78,17 @@
     z-index: 15;
   }
 
+  /* GIF kursora nad kotem */
+  #catCursorGif {
+    position: fixed;
+    top: 20px;        /* trochę poniżej górnej krawędzi */
+    right: 120px;     /* przesunięty w lewo od kota */
+    width: 50px;
+    height: auto;
+    z-index: 16;
+    pointer-events: none;
+  }
+
   /* SoundCloud iframe */
   #scPlayer {
     position: fixed;
@@ -103,6 +114,7 @@
 
 <!-- Kot w prawym górnym rogu -->
 <img id="catCursor" src="cat.gif" alt="Kliknij kota, aby odtworzyć muzykę">
+<img id="catCursorGif" src="cursor.gif" alt="Kliknij kota">
 
 <!-- SoundCloud iframe -->
 <iframe id="scPlayer" 
