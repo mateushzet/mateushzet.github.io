@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pierdolnij się w łeb</title>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #222;
+    overflow: hidden;
+    font-family: sans-serif;
+    color: white;
+  }
+
+  #button {
+    padding: 20px 40px;
+    font-size: 24px;
+    background: #e74c3c;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+  }
+
+  #smash {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background: url('https://i.imgur.com/1tQvFfM.png') center center no-repeat; /* przykładowe rozbite szkło */
+    background-size: cover;
+    opacity: 0;
+    transition: opacity 0.2s;
+    z-index: 2;
+  }
+
+  #hand {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: url('https://i.imgur.com/YOUR_HAND_IMAGE.png') no-repeat center center; /* ręka/deska */
+    background-size: contain;
+    top: -150px;
+    left: 50%;
+    transform: translateX(-50%) rotate(0deg);
+    transition: top 0.2s, transform 0.2s;
+    z-index: 3;
+  }
+
+  .hit #hand {
+    top: 50%;
+    transform: translateX(-50%) rotate(-20deg);
+    transition: top 0.1s, transform 0.1s;
+  }
+
+  .hit #smash {
+    opacity: 1;
+    transition: opacity 0.2s;
+  }
+</style>
+</head>
+<body>
+
+<button id="button">Pierdolnij się w łeb!</button>
+<div id="smash"></div>
+<div id="hand"></div>
+
+<script>
+  const button = document.getElementById('button');
+  const body = document.body;
+
+  button.addEventListener('click', () => {
+    body.classList.add('hit');
+    
+    // usuń efekt po 0.5s
+    setTimeout(() => {
+      body.classList.remove('hit');
+    }, 500);
+  });
+</script>
+
+</body>
+</html>
