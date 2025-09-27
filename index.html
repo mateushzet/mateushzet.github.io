@@ -68,21 +68,21 @@
     pointer-events: none;
   }
 
-  /* Kot w prawym górnym rogu */
+  /* Kot w prawym górnym rogu dokładnie */
   #catCursor {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 0;
+    right: 0;
     width: 100px;
     cursor: pointer;
     z-index: 15;
   }
 
-  /* GIF kursora na kotku */
+  /* GIF kursora na kotku (trochę niżej, nachodzi na kota) */
   #catCursorGif {
     position: fixed;
-    top: 20px;
-    right: 20px;  /* dokładnie na kotku */
+    top: 20px;       /* lekko w dół od górnej krawędzi */
+    right: 10px;     /* lekko w lewo od prawej krawędzi */
     width: 50px;
     height: auto;
     z-index: 16;
