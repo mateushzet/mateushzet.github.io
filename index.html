@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Losowe filmiki na całą stronę</title>
+<style>
+  body {
+    margin: 0;
+    background: black;
+    overflow: hidden;
+    font-family: sans-serif;
+  }
+
+  #videoPlayer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    background: black;
+    z-index: 0;
+  }
+
+  #bottomBar {
+    position: fixed;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+  }
+
+  #button {
+    padding: 25px 50px; /* większy przycisk */
+    font-size: 28px;    /* większy tekst */
+    color: white;       /* biały tekst */
+    background: linear-gradient(145deg, #e74c3c, #c0392b); /* ładniejszy gradient */
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4); /* delikatny cień */
+    transition: transform 0.1s, box-shadow 0.1s;
+  }
+
+  #button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  }
+
+  #cursorGif {
+    margin-top: -35px; /* nachodzi na przycisk */
+    width: 120px;
+    height: auto;
+    position: relative;
+    z-index: 2; /* nad przyciskiem */
+    pointer-events: none; /* kliknięcie przechodzi */
+  }
+</style>
+</head>
+<body>
+
+<video id="videoPlayer"></video>
+
+<div id="bottomBar">
+  <button id="button">Pierdolnij się w łeb</button>
+  <img id="cursorGif" src="cursor.gif" alt="Kliknij tutaj">
+</div>
+
+<script>
+const button = document.getElementById('button');
+const videoPlayer = document.getElementById('videoPlayer');
+
+button.addEventListener('click', () => {
+  const randomNum = Math.floor(Math.random() * 10) + 1;
+  const fileName = randomNum + '.mp4';
+  console.log('Próbuję odtworzyć:', fileName);
+
+  videoPlayer.src = fileName;
+  videoPlayer.muted = false; // przywrócenie dźwięku
+  videoPlayer.play().catch(err => console.error('Błąd odtwarzania wideo:', err));
+});
+</script>
+
+</body>
+</html>
