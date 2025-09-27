@@ -25,7 +25,7 @@
 
   #bottomBar {
     position: fixed;
-    bottom: 100px; /* przycisk wyżej o 60px */
+    bottom: 60px; /* przycisk niżej niż wcześniej */
     left: 50%;
     transform: translateX(-50%);
     display: flex;
@@ -41,12 +41,15 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    position: relative;
+    z-index: 2; /* przycisk nad gifem */
   }
 
   #cursorGif {
-    margin-top: 20px; /* odstęp między przyciskiem a gifiem */
-    width: 100px; /* większy gif */
+    margin-top: -30px; /* gif nachodzi na przycisk */
+    width: 100px;
     height: auto;
+    z-index: 1; /* gif pod przyciskiem */
   }
 </style>
 </head>
