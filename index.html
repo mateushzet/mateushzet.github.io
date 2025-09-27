@@ -14,6 +14,7 @@
     overflow: hidden;
     font-family: sans-serif;
     color: white;
+    position: relative;
   }
 
   #button {
@@ -34,7 +35,7 @@
     top: 0;
     left: 0;
     pointer-events: none;
-    background: url('https://i.imgur.com/1tQvFfM.png') center center no-repeat; /* przykładowe rozbite szkło */
+    background: url('https://i.imgur.com/1tQvFfM.png') center center no-repeat; /* rozbite szkło */
     background-size: cover;
     opacity: 0;
     transition: opacity 0.2s;
@@ -64,6 +65,18 @@
     opacity: 1;
     transition: opacity 0.2s;
   }
+
+  /* wideo na dole strony */
+  #videoPlayer {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 640px;
+    height: 360px;
+    z-index: 0;
+    background: black;
+  }
 </style>
 </head>
 <body>
@@ -72,18 +85,28 @@
 <div id="smash"></div>
 <div id="hand"></div>
 
-<script>
-  const button = document.getElementById('button');
-  const body = document.body;
+<video id="videoPlayer" controls>
+  <source id="videoSource" src="1.mp4" type="video/mp4">
+  Twoja przeglądarka nie wspiera odtwarzania wideo.
+</video>
 
-  button.addEventListener('click', () => {
-    body.classList.add('hit');
-    
-    // usuń efekt po 0.5s
-    setTimeout(() => {
-      body.classList.remove('hit');
-    }, 500);
-  });
+<script>
+const button = document.getElementById('button');
+const body = document.body;
+const videoPlayer = document.getElementById('videoPlayer');
+const videoSource = document.getElementById('videoSource');
+
+button.addEventListener('click', () => {
+  // efekt uderzenia
+  body.classList.add('hit');
+  setTimeout(() => body.classList.remove('hit'), 500);
+
+  // losowe wideo 1-10
+  const randomNum = Math.floor(Math.random() * 10) + 1;
+  videoSource.src = randomNum + '.mp4';
+  videoPlayer.load();
+  videoPlayer.play();
+});
 </script>
 
 </body>
