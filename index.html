@@ -18,10 +18,9 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* wypełnia całe tło, zachowując proporcje */
     background: black;
     z-index: 0;
-    display: none; /* domyślnie ukryty */
   }
 
   #bottomBar {
@@ -32,7 +31,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 10;
+    z-index: 10; /* przycisk nad filmikiem */
   }
 
   #button {
@@ -55,18 +54,18 @@
   }
 
   #cursorGif {
-    margin-top: -35px;
+    margin-top: -35px; /* nachodzi na przycisk */
     width: 120px;
     height: auto;
     position: relative;
-    z-index: 2;
+    z-index: 2; /* nad przyciskiem */
     pointer-events: none;
   }
 </style>
 </head>
 <body>
 
-<video id="videoPlayer" playsinline muted></video>
+<video id="videoPlayer" playsinline></video>
 
 <div id="bottomBar">
   <button id="button">Pierdolnij się w łeb</button>
@@ -83,13 +82,8 @@ button.addEventListener('click', () => {
   console.log('Próbuję odtworzyć:', fileName);
 
   videoPlayer.src = fileName;
-  videoPlayer.style.display = 'block'; // pokazujemy player
+  videoPlayer.muted = false;
   videoPlayer.play().catch(err => console.error('Błąd odtwarzania wideo:', err));
-});
-
-// po zakończeniu filmu ukrywamy player
-videoPlayer.addEventListener('ended', () => {
-  videoPlayer.style.display = 'none';
 });
 </script>
 
