@@ -14,7 +14,7 @@
     height: 100vh;
   }
 
-  /* Wideo zajmuje cały ekran */
+  /* Wideo na cały ekran */
   #videoPlayer {
     position: absolute;
     top: 0;
@@ -26,7 +26,7 @@
     z-index: 1;
   }
 
-  /* Kontener przycisku + ikony */
+  /* Pasek dolny z przyciskiem */
   #bottomBar {
     position: absolute;
     bottom: 40px;
@@ -48,20 +48,11 @@
     color: white;
   }
 
-  /* Ikonka myszy */
+  /* Gif kursora */
   #mouseIcon {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: auto;
     margin-left: 15px;
-    background: url('https://i.imgur.com/8yG1eXh.png') no-repeat center center; /* przykładowa ikonka myszy */
-    background-size: contain;
-    animation: clickAnim 1s infinite;
-  }
-
-  /* Animacja "kliknięcia" */
-  @keyframes clickAnim {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
   }
 </style>
 </head>
@@ -74,7 +65,7 @@
 
 <div id="bottomBar">
   <button id="button">Pierdolnij się w łeb</button>
-  <div id="mouseIcon"></div>
+  <img id="mouseIcon" src="cursor.gif" alt="Kliknij">
 </div>
 
 <script>
@@ -93,7 +84,7 @@ button.addEventListener('click', () => {
   videoPlayer.load();
   videoPlayer.play().catch(err => console.error('Błąd odtwarzania wideo:', err));
 
-  // Ukryj ikonę myszy po pierwszym kliknięciu
+  // Ukryj gifa po pierwszym kliknięciu
   mouseIcon.style.display = 'none';
 });
 </script>
