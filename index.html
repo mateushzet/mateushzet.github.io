@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Losowe filmiki na całą stronę</title>
+<title>Losowe filmiki + SoundCloud</title>
 <style>
   body {
     margin: 0;
@@ -18,24 +18,26 @@
     left: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover; /* wypełnia całe tło, zachowując proporcje */
+    object-fit: cover;
     background: black;
     z-index: 0;
+    display: none;
+    playsinline: true;
   }
 
   #bottomBar {
     position: fixed;
-    bottom: 60px;
+    bottom: 80px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 10; /* przycisk nad filmikiem */
+    z-index: 10;
   }
 
   #button {
-    padding: 25px 50px;
+    padding: 30px 60px;
     font-size: 28px;
     color: white;
     background: linear-gradient(145deg, #e74c3c, #c0392b);
@@ -54,12 +56,32 @@
   }
 
   #cursorGif {
-    margin-top: -35px; /* nachodzi na przycisk */
+    margin-top: -35px;
     width: 120px;
     height: auto;
     position: relative;
-    z-index: 2; /* nad przyciskiem */
+    z-index: 2;
     pointer-events: none;
+  }
+
+  /* Cat gif w prawym górnym rogu */
+  #catCursor {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 100px;
+    cursor: pointer;
+    z-index: 15;
+  }
+
+  #scPlayer {
+    position: fixed;
+    top: 50px;
+    right: 20px;
+    width: 300px;
+    height: 80px;
+    z-index: 14;
+    display: none;
   }
 </style>
 </head>
@@ -72,18 +94,41 @@
   <img id="cursorGif" src="cursor.gif" alt="Kliknij tutaj">
 </div>
 
+<!-- Cat gif do SoundCloud -->
+<img id="catCursor" src="cat.gif" alt="Kliknij kota, aby odtworzyć muzykę">
+
+<!-- Zagnieżdżony SoundCloud -->
+<iframe id="scPlayer" 
+  scrolling="no" 
+  frameborder="no" 
+  allow="autoplay" 
+  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1585407946&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+</iframe>
+
 <script>
 const button = document.getElementById('button');
 const videoPlayer = document.getElementById('videoPlayer');
+const catCursor = document.getElementById('catCursor');
+const scPlayer = document.getElementById('scPlayer');
 
+// Losowe filmiki 1-41
 button.addEventListener('click', () => {
-  const randomNum = Math.floor(Math.random() * 10) + 1;
+  const randomNum = Math.floor(Math.random() * 41) + 1;
   const fileName = randomNum + '.mp4';
   console.log('Próbuję odtworzyć:', fileName);
 
   videoPlayer.src = fileName;
-  videoPlayer.muted = false;
+  videoPlayer.style.display = 'block';
   videoPlayer.play().catch(err => console.error('Błąd odtwarzania wideo:', err));
+});
+
+videoPlayer.addEventListener('ended', () => {
+  videoPlayer.style.display = 'none';
+});
+
+// Kliknięcie w kota uruchamia SoundCloud
+catCursor.addEventListener('click', () => {
+  scPlayer.style.display = 'block';
 });
 </script>
 
