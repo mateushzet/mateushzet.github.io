@@ -97,12 +97,10 @@
 <!-- Cat gif do SoundCloud -->
 <img id="catCursor" src="cat.gif" alt="Kliknij kota, aby odtworzyć muzykę">
 
-<!-- Zagnieżdżony SoundCloud -->
+<!-- SoundCloud iframe -->
 <iframe id="scPlayer" 
-  scrolling="no" 
-  frameborder="no" 
-  allow="autoplay" 
-  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1585407946&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+  width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+  src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A708340477&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
 </iframe>
 
 <script>
@@ -126,7 +124,7 @@ videoPlayer.addEventListener('ended', () => {
   videoPlayer.style.display = 'none';
 });
 
-// Kliknięcie w kota uruchamia SoundCloud
+// Kliknięcie w kota pokazuje SoundCloud
 catCursor.addEventListener('click', () => {
   scPlayer.style.display = 'block';
 });
