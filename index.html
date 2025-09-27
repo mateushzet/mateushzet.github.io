@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Losowe filmiki fullscreen</title>
+<title>Losowe filmiki na całą stronę</title>
 <style>
   body {
     margin: 0;
@@ -54,18 +54,6 @@ button.addEventListener('click', () => {
 
   videoPlayer.src = fileName;
   videoPlayer.play().catch(err => console.error('Błąd odtwarzania wideo:', err));
-
-  // fullscreen
-  if (videoPlayer.requestFullscreen) {
-    videoPlayer.requestFullscreen();
-  } else if (videoPlayer.webkitRequestFullscreen) {
-    videoPlayer.webkitRequestFullscreen();
-  } else if (videoPlayer.msRequestFullscreen) {
-    videoPlayer.msRequestFullscreen();
-  }
-
-  // ukryj przycisk
-  button.style.display = 'none';
 });
 </script>
 
