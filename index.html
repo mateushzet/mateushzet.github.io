@@ -41,15 +41,14 @@
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    margin-top: 15px;
+    margin-bottom: 20px; /* dodane żeby zrobić odstęp nad gifem */
     z-index: 2;
   }
 
   #mouseIcon {
     width: 120px;
     height: auto;
-    margin-bottom: -60px; /* niżej – nachodzi mocniej na przycisk */
-    z-index: 3;
+    z-index: 1;
     pointer-events: none;
   }
 </style>
@@ -59,8 +58,8 @@
 <video id="videoPlayer"></video>
 
 <div id="bottomBar">
-  <img id="mouseIcon" src="cursor.gif" alt="Kliknij">
   <button id="button">Pierdolnij się w łeb</button>
+  <img id="mouseIcon" src="cursor.gif" alt="Kliknij">
 </div>
 
 <script>
