@@ -273,6 +273,32 @@ horoscopeButton.addEventListener('click', () => {
   horoscopeBubble.textContent = horoscopes[randomIndex];
   horoscopeBubble.style.display = 'block';
 });
+
+function updateVisitCount() {
+  fetch('https://api.countapi.xyz/hit/codzienny-horoskop/main')
+    .then(res => res.json())
+    .then(data => {
+      console.log('Liczba odwiedzin:', data.value);
+      let counterElem = document.getElementById('visitCounter');
+      if (!counterElem) {
+        counterElem = document.createElement('div');
+        counterElem.id = 'visitCounter';
+        counterElem.style.position = 'fixed';
+        counterElem.style.bottom = '10px';
+        counterElem.style.left = '10px';
+        counterElem.style.color = 'white';
+        counterElem.style.background = 'rgba(0,0,0,0.5)';
+        counterElem.style.padding = '5px 10px';
+        counterElem.style.borderRadius = '10px';
+        counterElem.style.fontFamily = 'sans-serif';
+        document.body.appendChild(counterElem);
+      }
+      counterElem.textContent = 'Odwiedziny: ' + data.value;
+    })
+    .catch(err => console.error('Błąd licznika:', err));
+}
+
+
 </script>
 
 </body>
