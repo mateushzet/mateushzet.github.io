@@ -124,6 +124,14 @@
 </style>
 </head>
 <body>
+<script>
+console.log('Skrypt działa');
+</script>
+
+<script>
+updateVisitCount();
+</script>
+
 
 <video id="videoPlayer" playsinline></video>
 
@@ -275,10 +283,11 @@ horoscopeButton.addEventListener('click', () => {
 });
 
 function updateVisitCount() {
+  console.log('updateVisitCount wywołane'); // 🔹 debug
   fetch('https://api.countapi.xyz/hit/codzienny-horoskop/main')
     .then(res => res.json())
     .then(data => {
-      console.log('Liczba odwiedzin:', data.value);
+      console.log('Odpowiedź CountAPI:', data);
       let counterElem = document.getElementById('visitCounter');
       if (!counterElem) {
         counterElem = document.createElement('div');
@@ -299,6 +308,8 @@ function updateVisitCount() {
 }
 
 updateVisitCount();
+
+
 
 </script>
 
