@@ -274,6 +274,51 @@ horoscopeButton.addEventListener('click', () => {
   horoscopeBubble.style.display = 'block';
 });
 
+const BIN_ID = "68d88d33d0ea881f408d5bd6";
+const API_KEY = "$2a$10$L6om7.lTGeJDpQhCp14jgOQk.hnZ3vaxlhOu.uUeSByZr6wciJymW";
+
+async function updateVisitCount() {
+    try {
+        const res = await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}/latest`, {
+            headers: { "X-Master-Key": API_KEY }
+        });
+        const data = await res.json();
+        let visits = data.record.visits || 0;
+
+        visits++;
+
+        await fetch(`https://api.jsonbin.io/v3/b/${BIN_ID}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "X-Master-Key": API_KEY
+            },
+            body: JSON.stringify({ visits })
+        });
+
+        let counterElem = document.getElementById('visitCounter');
+        if (!counterElem) {
+            counterElem = document.createElement('div');
+            counterElem.id = 'visitCounter';
+            counterElem.style.position = 'fixed';
+            counterElem.style.bottom = '10px';
+            counterElem.style.left = '10px';
+            counterElem.style.color = 'white';
+            counterElem.style.background = 'rgba(0,0,0,0.5)';
+            counterElem.style.padding = '5px 10px';
+            counterElem.style.borderRadius = '10px';
+            counterElem.style.fontFamily = 'sans-serif';
+	    counterElem.style.fontSize = '4px';
+            document.body.appendChild(counterElem);
+        }
+        counterElem.textContent = visits;
+
+    } catch (err) {
+        console.error('Visit count error:', err);
+    }
+}
+
+updateVisitCount();
 
 </script>
 
