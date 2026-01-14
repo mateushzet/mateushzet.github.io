@@ -1,10 +1,208 @@
 <!DOCTYPE html>
-<html>
+<html lang="pl">
 <head>
-    <title>test</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jezioro Relaksu – SPA & Wellness</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0b1e22;
+      --bg-soft: #102a2f;
+      --gold: #d6b46a;
+      --aqua: #4fd1c5;
+      --text: #e7f2f2;
+      --muted: #9fbcbc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: radial-gradient(circle at top, #12363c, var(--bg));
+      color: var(--text);
+      font-family: "Inter", sans-serif;
+      line-height: 1.7;
+    }
+
+    header {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 1.5rem;
+      background: linear-gradient(to bottom, rgba(11,30,34,.85), rgba(11,30,34,.95));
+    }
+
+    header h1 {
+      font-family: "Cinzel", serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      margin-bottom: 1rem;
+    }
+
+    header h2 {
+      font-weight: 300;
+      color: var(--aqua);
+      letter-spacing: 0.2em;
+      font-size: 0.9rem;
+      margin-bottom: 3rem;
+    }
+
+    header p {
+      max-width: 760px;
+      margin: auto;
+      font-size: 1.05rem;
+      color: var(--muted);
+    }
+
+    section {
+      padding: 6rem 1.5rem;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    section h3 {
+      font-family: "Cinzel", serif;
+      color: var(--gold);
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+
+    .legend {
+      font-style: italic;
+      color: var(--muted);
+      max-width: 800px;
+      margin: auto;
+    }
+
+    .offer {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--bg-soft), rgba(16,42,47,.7));
+      border-radius: 18px;
+      padding: 2rem;
+      box-shadow: 0 20px 40px rgba(0,0,0,.4);
+      transition: transform .4s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card h4 {
+      font-family: "Cinzel", serif;
+      color: var(--aqua);
+      margin-bottom: 1rem;
+    }
+
+    footer {
+      background: #07161a;
+      text-align: center;
+      padding: 4rem 1.5rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    footer strong {
+      color: var(--gold);
+      font-family: "Cinzel", serif;
+      letter-spacing: .15em;
+    }
+
+    @media (max-width: 600px) {
+      header p {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <h1>test</h1>
-    <p>test</p>
+
+<header>
+  <div>
+    <h1>JEZIORO RELAKSU</h1>
+    <h2>SPA & WELLNESS</h2>
+    <p>
+      Gdy w dolinie u stóp Zamku Dobczyckiego pojawiła się woda, mówiono, że zamek przestał milczeć.
+      W odbiciu jeziora można było dostrzec nie tylko jego mury, lecz także spokój,
+      który dojrzewał w nich przez wieki.
+    </p>
+  </div>
+</header>
+
+<section>
+  <h3>Legenda Ciszy</h3>
+  <div class="legend">
+    <p>
+      Z czasem wierzono, że woda przyjęła ciszę tego miejsca — ciszę kamienia,
+      porannych mgieł i długich spojrzeń ku horyzontowi.
+      Ciszę, która nie jest brakiem dźwięku, lecz obecnością ukojenia.
+    </p>
+    <br>
+    <p>
+      Ci, którzy zatrzymywali się nad brzegiem, czuli, że łatwiej oddychać.
+      Myśli zwalniały, ciało miękło, a serce odnajdywało swój rytm —
+      jakby jezioro wiedziało, czego potrzeba.
+    </p>
+    <br>
+    <p>
+      Tak narodziła się opowieść o miejscu, które koi.
+      O relaksie, który nie przychodzi z zewnątrz,
+      lecz budzi się w środku.
+    </p>
+  </div>
+</section>
+
+<section>
+  <h3>Rytuały Jeziora Relaksu</h3>
+
+  <div class="offer">
+    <div class="card">
+      <h4>Rytuały dla Dwojga</h4>
+      <p>
+        Subtelne ceremonie bliskości, ciepła i ciszy.
+        Wspólne zanurzenie w rytmie oddechu i dotyku.
+      </p>
+    </div>
+
+    <div class="card">
+      <h4>Zabiegi Twarzy</h4>
+      <p>
+        Kobido, rytuały pielęgnacyjne i japońska precyzja,
+        które przywracają skórze świeżość i harmonię.
+      </p>
+    </div>
+
+    <div class="card">
+      <h4>Rytuały Odnowy</h4>
+      <p>
+        Połączenie natury, duchowości i współczesnych technik relaksu.
+        Powrót do pierwotnej równowagi.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><strong>JEZIORO RELAKSU</strong></p>
+  <p>Spa & Wellness • Dobczyce</p>
+  <p>kontakt@jeziororelaksu.pl</p>
+</footer>
+
 </body>
 </html>
