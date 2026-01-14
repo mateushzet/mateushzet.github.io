@@ -37,7 +37,7 @@
       overflow-x: hidden;
     }
 
-    /* Nawigacja */
+    /* Nav */
     .navbar {
       position: fixed;
       top: 0;
@@ -75,7 +75,7 @@
       color: var(--aqua);
     }
 
-    /* Hero z tłem */
+    /* Hero with background */
     header {
       min-height: 100vh;
       display: flex;
@@ -144,7 +144,7 @@
       box-shadow: 0 10px 25px rgba(214, 180, 106, 0.3);
     }
 
-    /* Sekcje */
+    /* Sections */
     section {
       padding: 6rem 1.5rem;
       max-width: 1200px;
@@ -183,7 +183,7 @@
       line-height: 1.9;
     }
 
-    /* Galeria */
+    /* Galery */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -224,7 +224,7 @@
       color: white;
     }
 
-    /* Offer */
+    /* Offers */
     .offer {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -261,7 +261,7 @@
       font-size: 1.4rem;
     }
 
-    /* Kontakt */
+    /* Contact */
     .contact-info {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -283,19 +283,65 @@
       margin-bottom: 1rem;
     }
 
+    /* Map */
+    .map-container {
+      margin-top: 4rem;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      border: 2px solid rgba(214, 180, 106, 0.2);
+      height: 400px;
+    }
+
+    .map-frame {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .map-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(11, 30, 34, 0.1);
+      pointer-events: none;
+      border-radius: 14px;
+    }
+
     /* Footer */
     footer {
       background: #07161a;
       text-align: center;
-      padding: 4rem 1.5rem;
+      padding: 4rem 1.5rem 2rem;
       color: var(--muted);
       font-size: 0.9rem;
       border-top: 1px solid rgba(214, 180, 106, 0.1);
     }
 
     .footer-content {
-      max-width: 800px;
+      max-width: 1200px;
       margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+
+    @media (max-width: 992px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    .footer-info {
+      text-align: left;
     }
 
     footer strong {
@@ -307,24 +353,59 @@
       margin-bottom: 1rem;
     }
 
+    .footer-contact {
+      margin: 1.5rem 0;
+      text-align: left;
+    }
+
+    .footer-contact p {
+      margin: 0.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .footer-contact i {
+      color: var(--aqua);
+      width: 20px;
+    }
+
     .social-icons {
       display: flex;
-      justify-content: center;
       gap: 1.5rem;
       margin: 2rem 0;
+      justify-content: flex-start;
     }
 
     .social-icons a {
       color: var(--muted);
       font-size: 1.5rem;
-      transition: color 0.3s;
+      transition: all 0.3s;
+      width: 45px;
+      height: 45px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: rgba(16, 42, 47, 0.5);
     }
 
     .social-icons a:hover {
       color: var(--aqua);
+      background: rgba(79, 209, 197, 0.1);
+      transform: translateY(-3px);
     }
 
-    /* Animacje */
+    .copyright {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.8rem;
+      color: #6a8a8a;
+      text-align: center;
+    }
+
+    /* Animation */
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -347,7 +428,7 @@
       transform: translateY(0);
     }
 
-    /* Responsywność */
+    /* Responsive */
     @media (max-width: 768px) {
       .navbar {
         flex-direction: column;
@@ -370,6 +451,15 @@
       .contact-info {
         grid-template-columns: 1fr;
       }
+      
+      .map-container {
+        height: 300px;
+        margin-top: 2rem;
+      }
+      
+      .footer-contact p {
+        font-size: 0.9rem;
+      }
     }
 
     @media (max-width: 600px) {
@@ -381,12 +471,16 @@
       .card {
         padding: 2rem 1.5rem;
       }
+      
+      .footer-grid {
+        gap: 1.5rem;
+      }
     }
   </style>
 </head>
 
 <body>
-  <!-- Nawigacja -->
+  <!-- Nav -->
   <nav class="navbar">
     <div class="logo">JEZIORO RELAKSU</div>
     <div class="nav-links">
@@ -395,6 +489,7 @@
       <a href="#galeria">Galeria</a>
       <a href="#rytualy">Rytuały</a>
       <a href="#kontakt">Kontakt</a>
+      <a href="#mapa">Mapa</a>
     </div>
   </nav>
 
@@ -412,7 +507,7 @@
     </div>
   </header>
 
-  <!-- Legenda -->
+  <!-- Info -->
   <section id="legenda" class="fade-in">
     <h3>Legenda Ciszy</h3>
     <div class="legend">
@@ -434,7 +529,7 @@
     </div>
   </section>
 
-  <!-- Galeria -->
+  <!-- Galery -->
   <section id="galeria" class="fade-in">
     <h3>Galeria Ciszy</h3>
     <div class="gallery">
@@ -459,7 +554,7 @@
     </div>
   </section>
 
-  <!-- Rytuały -->
+  <!-- Info -->
   <section id="rytualy" class="fade-in">
     <h3>Rytuały Jeziora Relaksu</h3>
 
@@ -501,7 +596,7 @@
     </div>
   </section>
 
-  <!-- Kontakt -->
+  <!-- Contact -->
   <section id="kontakt" class="fade-in">
     <h3>Zanurz się w spokoju</h3>
     
@@ -532,23 +627,63 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
+  <!-- Mapa -->
+  <footer id="mapa">
     <div class="footer-content">
-      <strong>JEZIORO RELAKSU</strong>
-      <p>Spa & Wellness • Relaks nad Jeziorem Dobczyckim</p>
-      
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-facebook"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-tripadvisor"></i></a>
-        <a href="#"><i class="fas fa-envelope"></i></a>
+      <div class="footer-grid">
+        <!-- Contact -->
+        <div class="footer-info">
+          <strong>JEZIORO RELAKSU</strong>
+          <div class="footer-contact">
+            <p><i class="fas fa-map-marker-alt"></i> Jezioro Dobczyckie, 32-410 Dobczyce</p>
+            <p><i class="fas fa-phone"></i> +48 123 456 789</p>
+            <p><i class="fas fa-envelope"></i> kontakt@jeziororelaksu.pl</p>
+            <p><i class="fas fa-clock"></i> Pon - Nd: 9:00 - 21:00</p>
+          </div>
+          
+          <div class="social-icons">
+            <a href="#" title="Facebook">
+              <i class="fab fa-facebook"></i>
+            </a>
+            <a href="#" title="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="#" title="TripAdvisor">
+              <i class="fab fa-tripadvisor"></i>
+            </a>
+            <a href="mailto:kontakt@jeziororelaksu.pl" title="Wyślij email">
+              <i class="fas fa-envelope"></i>
+            </a>
+          </div>
+        </div>
+        
+        <!-- Map -->
+        <div>
+          <h4 style="color: var(--aqua); margin-bottom: 1rem; text-align: left; font-family: 'Cinzel', serif;">
+            <i class="fas fa-map-marked-alt"></i> Znajdź nas
+          </h4>
+          <div class="map-container">
+            <!-- Google Maps -->
+            <iframe 
+              class="map-frame"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2580.340462358347!2d20.079561876843677!3d49.87527707146674!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47162476d2181dcf%3A0xeed168b5dd0d9f3!2sZalew%20Dobczycki!5e0!3m2!1spl!2spl!4v1707921234567!5m2!1spl!2spl"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Mapa dojazdu do Jeziora Relaksu">
+            </iframe>
+            <div class="map-overlay"></div>
+          </div>
+          <p style="text-align: left; margin-top: 1rem; font-size: 0.9rem; color: var(--muted);">
+            <i class="fas fa-car"></i> Parking dla gości dostępny na miejscu
+          </p>
+        </div>
       </div>
       
-      <p>kontakt@jeziororelaksu.pl | +48 123 456 789</p>
-      <p style="margin-top: 2rem; font-size: 0.8rem; color: #6a8a8a;">
-        &copy; 2023 Jezioro Relaksu. Wszelkie prawa zastrzeżone.
-      </p>
+      <div class="copyright">
+        <p>&copy; 2023 Jezioro Relaksu SPA & Wellness. Wszelkie prawa zastrzeżone.</p>
+        <p style="margin-top: 0.5rem;">Projekt i realizacja: <span style="color: var(--aqua);">Jezioro Relaksu</span></p>
+      </div>
     </div>
   </footer>
 
@@ -598,6 +733,25 @@
           navbar.style.boxShadow = 'none';
         }
       });
+      
+      // Map interaction
+      const mapFrame = document.querySelector('.map-frame');
+      const mapContainer = document.querySelector('.map-container');
+      
+      mapContainer.addEventListener('mouseenter', () => {
+        mapContainer.style.transform = 'translateY(-5px)';
+        mapContainer.style.transition = 'transform 0.3s ease';
+      });
+      
+      mapContainer.addEventListener('mouseleave', () => {
+        mapContainer.style.transform = 'translateY(0)';
+      });
+    });
+    
+    // Lazy loading
+    window.addEventListener('load', function() {
+      const mapIframe = document.querySelector('.map-frame');
+      mapIframe.setAttribute('src', mapIframe.getAttribute('src'));
     });
   </script>
 </body>
